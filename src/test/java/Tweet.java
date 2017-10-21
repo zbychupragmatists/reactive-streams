@@ -15,4 +15,8 @@ public class Tweet {
         sb.append('}');
         return sb.toString();
     }
+
+    public String getAuthor() {
+        return author;
+    }
 }
