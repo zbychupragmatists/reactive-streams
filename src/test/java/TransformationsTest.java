@@ -14,5 +14,32 @@ public class TransformationsTest {
                     Utils.log(s);
                 })
         ;
+
+        // subscribe informs upstream wants to receive
+        // filter does not have any items by itself so it just subsribes to upstream as well
+        // map the same
+        // up to Observable just
+    }
+
+    @Test
+    public void flatMap() throws Exception {
+
+        Observable<CarPhoto> cars = cars();
+        recognize(new CarPhoto());
+    }
+
+    private Observable<LicensePlate> recognize(CarPhoto carPhoto) {
+        return null;
+    }
+
+
+    private Observable<CarPhoto> cars() {
+        return null;
+    }
+
+    private class CarPhoto {
+    }
+
+    private class LicensePlate {
     }
 }
