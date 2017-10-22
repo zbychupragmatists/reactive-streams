@@ -22,7 +22,16 @@ public class CreateObservableTest {
 
     @Test
     public void just_implementation() throws Exception {
+        //
+    }
 
+    @Test
+    public void many_subscribers_with_cache() throws Exception {
+        Observable<Integer> intsStream = intsStream();
+        Utils.log("Start");
+        intsStream.subscribe(integer -> Utils.log("A: " + integer));
+        intsStream.subscribe(integer -> Utils.log("B: " + integer));
+        Utils.log("Exit");
     }
 
     private Observable<Integer> intsStream() {
