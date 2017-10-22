@@ -19,9 +19,6 @@ public class TwitterMultiObservableTest {
         );
     }
 
-    private void register(Subscriber<? super Object> subscriber) {
-    }
-
     class LazyTwitterObservable {
         private final Set<Subscriber<? super Status>> subscribers = new CopyOnWriteArraySet();
         private final TwitterStream twitterStream;
