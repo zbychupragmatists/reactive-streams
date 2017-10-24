@@ -37,7 +37,6 @@ public class TransformationsTest {
     @Test
     public void flatMapConcurrent() throws Exception {
         // wrocimy
-
     }
 
     private Observable<LicensePlate> recognize(CarPhoto carPhoto) {
