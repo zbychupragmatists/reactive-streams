@@ -1,5 +1,10 @@
 import org.junit.Test;
 import rx.Observable;
+import rx.Scheduler;
+import rx.schedulers.Schedulers;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ReactiveBasicsTest {
 
@@ -10,6 +15,7 @@ public class ReactiveBasicsTest {
         tweetObservable.subscribe(
                 (Tweet tweet) -> Utils.log(tweet)
         );
+        // check also full version
     }
 
     @Test
@@ -32,6 +38,7 @@ public class ReactiveBasicsTest {
 
     @Test
     public void tweets_with_subscriber() throws Exception {
+        // unsubscribe on Lech
         Observable<Tweet> tweetObservable = newTweetsStream();
 
     }

@@ -1,4 +1,3 @@
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.junit.Test;
 import rx.Observable;
 import rx.Scheduler;
@@ -6,11 +5,10 @@ import rx.schedulers.Schedulers;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 
 public class SchedulersTest {
 
-    ExecutorService poolA = Executors.newFixedThreadPool(10, newThreadFactory("Sched-A-%d"));
+    ExecutorService poolA = Executors.newFixedThreadPool(10, Utils.newThreadFactory("Sched-A-%d"));
     Scheduler schedulerA = Schedulers.from(poolA);
 
     @Test
@@ -73,10 +71,6 @@ public class SchedulersTest {
             subscriber.onNext("B");
             subscriber.onCompleted();
         });
-    }
-
-    private ThreadFactory newThreadFactory(String format) {
-        return new ThreadFactoryBuilder().setNameFormat(format).build();
     }
 
 
