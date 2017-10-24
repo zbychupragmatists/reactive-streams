@@ -1,5 +1,8 @@
 import org.junit.Test;
 import rx.Observable;
+import rx.schedulers.Schedulers;
+
+import java.util.concurrent.TimeUnit;
 
 public class TransformationsTest {
 
@@ -25,9 +28,16 @@ public class TransformationsTest {
     public void flatMap() throws Exception {
 
         Observable<CarPhoto> cars = cars();
-        cars.flatMap(carPhoto -> recognize(carPhoto))
+        cars
+                .flatMap(carPhoto -> recognize(carPhoto))
                 .subscribe(licensePlate -> Utils.log(licensePlate), throwable -> Utils.log(throwable));
         Thread.sleep(300);
+    }
+
+    @Test
+    public void flatMapConcurrent() throws Exception {
+        // wrocimy
+
     }
 
     private Observable<LicensePlate> recognize(CarPhoto carPhoto) {
@@ -35,7 +45,7 @@ public class TransformationsTest {
             return Observable.just(new LicensePlate("A 123"));
         } else if (carPhoto.name.equals("B")) {
             return Observable.just(new LicensePlate("B 456"));
-//                    .delay(10, TimeUnit.MILLISECONDS);
+//                    .delay(10, TimeUnit.MILLISECONDS); // do not preserve order
         }
         return Observable.error(new RuntimeException("not recognised"));
     }

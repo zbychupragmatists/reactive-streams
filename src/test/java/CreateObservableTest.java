@@ -23,6 +23,7 @@ public class CreateObservableTest {
     @Test
     public void just_implementation() throws Exception {
         //
+
     }
 
     @Test
